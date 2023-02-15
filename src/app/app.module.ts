@@ -1,3 +1,4 @@
+import { CoreModule } from '@core/core.module';
 import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,13 +12,15 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { EntityDataModule } from '@ngrx/data';
 import { entityConfig } from './entity-metadata';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    CoreModule,
     BrowserAnimationsModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forRoot({}, {

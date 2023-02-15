@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <div class="container">
+    <div class="menu-item">
+      <a [routerLink]="['home']">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+        Home
+      </a>
+    </div>
+    <div class="menu-item">
+      <a  [routerLink]="['product']">
+        <mat-icon>shopping_cart</mat-icon>
+        Products
+      </a>
+    </div>
+    <div class="menu-item">
+      <a  [routerLink]="['category']">  <mat-icon> list_alt</mat-icon> Categories</a>
+    </div>
+    <div class="menu-item">
+      <span><mat-icon>exit_to_app</mat-icon>Logout</span>
+    </div>
+  </div>
+</mat-toolbar>

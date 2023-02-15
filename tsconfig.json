@@ -24,10 +24,10 @@
       "dom"
     ],
     "paths": {
-      "@shared/*": ["/src/app/shared/*"],
-      "@core/*": ["/src/app/core/*"],
-      "@modules/*": ["/src/app/modules/*"],
-      "@env/*": ["/src/environments/*"]
+      "@shared/*": ["./src/app/shared/*"],
+      "@core/*": ["./src/app/core/*"],
+      "@modules/*": ["./src/app/modules/*"],
+      "@env/*": ["./src/environments/*"]
     }
   },
   "angularCompilerOptions": {

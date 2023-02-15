@@ -1,0 +1,15 @@
+.container{
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+
+.menu-item {
+  width: 100px;
+  margin-right: 50px;
+  cursor: pointer;
+  &:hover {
+    color: black;
+  }
+}

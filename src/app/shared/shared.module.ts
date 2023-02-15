@@ -102,4 +102,4 @@ const AllMaterialModules = [
   declarations: [],
   providers: [],
 })
-export class NameModule { }
+export class SharedModule { }
