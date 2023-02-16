@@ -1,8 +1,8 @@
 <div class="container">
   <mat-card>
-    <mat-card-title>Register</mat-card-title>
+    <mat-card-title>Login</mat-card-title>
     <mat-card-content>
-      <form [formGroup]="userRegisterform" (ngSubmit)="onSubmit()">
+      <form [formGroup]="userform" (ngSubmit)="onSubmit()">
         <p>
           <mat-form-field>
             <input type="text" matInput placeholder="Username" formControlName="username">
@@ -15,18 +15,12 @@
           </mat-form-field>
         </p>
 
-        <p>
-          <mat-form-field>
-            <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
-          </mat-form-field>
-        </p>
-
         <div class="content-btn">
           <div>
-            <a [routerLink]="['']" mat-stroked-button color="primary">Back</a>
+            <a [routerLink]="['signup']" mat-stroked-button color="primary">Register</a>
           </div>
           <div>
-            <button type="submit" mat-raised-button color="primary" [disabled]="!userRegisterform.valid">Register</button>
+            <button type="submit" mat-raised-button color="primary" [disabled]="!userform.valid">Login</button>
           </div>
         </div>
 

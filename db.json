@@ -1,5 +1,21 @@
 {
   "products": [],
-  "users": [],
-  "categories":[]
+  "users": [
+    {
+      "id": "feab0893-6c5c-e7be-b5f0-bf803e2fe40a",
+      "username": "Eduardo",
+      "password": "1234"
+    },
+    {
+      "id": "df5de62b-cea0-6fb8-dabb-704ed0a40590",
+      "username": "Nathalia",
+      "password": "1234"
+    },
+    {
+      "id": "7ea6db9a-9447-14da-112e-3d8e01ed27b3",
+      "username": "Maria",
+      "password": "1234"
+    }
+  ],
+  "categories": []
 }

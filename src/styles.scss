@@ -2,3 +2,9 @@
 @import "base";
 @import "variables";
 @import "reset";
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+* {
+  box-sizing: border-box;
+}

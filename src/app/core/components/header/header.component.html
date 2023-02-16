@@ -16,7 +16,7 @@
       <a  [routerLink]="['category']">  <mat-icon> list_alt</mat-icon> Categories</a>
     </div>
     <div class="menu-item">
-      <span><mat-icon>exit_to_app</mat-icon>Logout</span>
+      <a (click)="logout()"><mat-icon>exit_to_app</mat-icon>Logout</a>
     </div>
   </div>
 </mat-toolbar>

@@ -28,6 +28,7 @@
     "@ngrx/router-store": "^15.3.0",
     "@ngrx/store": "^15.3.0",
     "@ngrx/store-devtools": "^15.3.0",
+    "guid-typescript": "^1.0.9",
     "json-server": "^0.17.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

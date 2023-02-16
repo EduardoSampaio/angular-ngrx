@@ -98,7 +98,7 @@ const AllMaterialModules = [
     ReactiveFormsModule,
     AllMaterialModules
   ],
-  exports: [AllMaterialModules],
+  exports: [AllMaterialModules, FormsModule, ReactiveFormsModule, HttpClientModule],
   declarations: [],
   providers: [],
 })
