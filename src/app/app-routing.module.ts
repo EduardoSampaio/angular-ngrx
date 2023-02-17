@@ -1,5 +1,8 @@
+import { LoggedinGuard } from '@core/guards/loggein.guard';
+import { PermissionGuard } from '@core/guards/permission.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { PageNotFoundComponent } from '@shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -11,6 +14,8 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./modules/home/home.module').then((m) => m.HomeModule),
+    canActivate: [LoggedinGuard],
+    canMatch: [PermissionGuard],
   },
   {
     path: 'category',
@@ -18,17 +23,22 @@ const routes: Routes = [
       import('./modules/category/category.module').then(
         (m) => m.CategoryModule
       ),
+    canActivate: [LoggedinGuard],
+    canMatch: [PermissionGuard]
   },
   {
     path: 'product',
     loadChildren: () =>
       import('./modules/product/product.module').then((m) => m.ProductModule),
+      canActivate: [LoggedinGuard],
+      canMatch: [PermissionGuard]
   },
   {
     path: '',
     redirectTo: '/login',
     pathMatch: 'full',
   },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
@@ -37,4 +47,4 @@ const routes: Routes = [
   })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

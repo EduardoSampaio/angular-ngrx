@@ -12,9 +12,12 @@
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
       ],
       "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -41,6 +44,7 @@
         "plugin:@angular-eslint/template/recommended"
       ],
       "rules": {
+
       }
     }
   ]

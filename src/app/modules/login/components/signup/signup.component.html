@@ -7,26 +7,41 @@
           <mat-form-field>
             <input type="text" matInput placeholder="Username" formControlName="username">
           </mat-form-field>
+          <mat-error *ngIf="username?.touched && username?.hasError('errorRequired')">
+            Username is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="username?.touched && username?.hasError('minlength')">
+            Username <strong>at least 3 characters</strong>
+          </mat-error>
         </p>
 
         <p>
           <mat-form-field>
             <input type="password" matInput placeholder="Password" formControlName="password">
           </mat-form-field>
+          <mat-error *ngIf="password?.touched && password?.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="password?.touched && password?.hasError('minlength')">
+            Password <strong>at least 4 characters</strong>
+          </mat-error>
         </p>
 
         <p>
           <mat-form-field>
             <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword">
+            <mat-error *ngIf="confirmPassword?.touched && confirmPassword?.hasError('passwordMismatch')">
+              Confirm Password is <strong>not the same as the password</strong>
+            </mat-error>
           </mat-form-field>
         </p>
-
         <div class="content-btn">
           <div>
             <a [routerLink]="['']" mat-stroked-button color="primary">Back</a>
           </div>
           <div>
-            <button type="submit" mat-raised-button color="primary" [disabled]="!userRegisterform.valid">Register</button>
+            <button type="submit" mat-raised-button color="primary"
+              [disabled]="!userRegisterform.valid">Register</button>
           </div>
         </div>
 

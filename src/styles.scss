@@ -8,3 +8,30 @@
 * {
   box-sizing: border-box;
 }
+
+
+.error {
+  --mdc-snackbar-supporting-text-color: #FBFBFB;
+  --mdc-snackbar-container-color: red;
+}
+
+.success {
+  --mdc-snackbar-supporting-text-color: #FBFBFB;
+  --mdc-snackbar-container-color: #14A44D;
+}
+
+.warning {
+  --mdc-snackbar-supporting-text-color: #FBFBFB;
+  --mdc-snackbar-container-color: #DC4C64;
+}
+
+.info {
+  --mdc-snackbar-supporting-text-color:#FBFBFB;
+  --mdc-snackbar-container-color: #54B4D3;
+}
+
+.my-custom-snackbar {
+  position: absolute !important;
+  left: 65% !important;
+  bottom: 85% !important;
+}

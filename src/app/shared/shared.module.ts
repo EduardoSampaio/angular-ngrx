@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -50,6 +51,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { NotificationCustomComponent } from './components/notification-custom/notification-custom.component';
 
 const AllMaterialModules = [
   MatAutocompleteModule,
@@ -96,10 +99,14 @@ const AllMaterialModules = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     AllMaterialModules
   ],
-  exports: [AllMaterialModules, FormsModule, ReactiveFormsModule, HttpClientModule],
-  declarations: [],
+  exports: [AllMaterialModules, FormsModule, ReactiveFormsModule, HttpClientModule, PageNotFoundComponent],
+  declarations: [
+    PageNotFoundComponent,
+    NotificationCustomComponent
+  ],
   providers: [],
 })
 export class SharedModule { }
