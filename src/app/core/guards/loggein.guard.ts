@@ -6,10 +6,8 @@ import { Observable } from 'rxjs';
 export class LoggedinGuard implements CanActivate  {
   constructor(private router: Router) { }
 
-
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
     const user = localStorage.getItem("user");
-    console.log(user);
     if(user !== null && user !== undefined){
       return true;
     }else{
