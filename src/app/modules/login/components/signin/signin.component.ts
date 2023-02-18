@@ -1,6 +1,6 @@
+import { AppState } from '@core/states/reducers/index';
 import { User } from '@shared/models/user.model';
 import { signIn } from '@core/states/actions/auth.action';
-import { AppState } from '@core/states/reducers/index';
 import { NotificationService } from '@shared/services/notification.service';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';

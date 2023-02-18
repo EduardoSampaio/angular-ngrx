@@ -1,4 +1,4 @@
-import { AppState } from './../../states/reducers/index';
+import { AppState } from '@core/states/reducers/index';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';

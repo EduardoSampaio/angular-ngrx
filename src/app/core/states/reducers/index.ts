@@ -6,26 +6,20 @@ import {
   createReducer,
   createSelector,
   MetaReducer,
-  on
+  on,
+  State
 } from '@ngrx/store';
-import { User } from '@shared/models/user.model';
-import { AuthActions } from '../actions/action-types';
+import { authReducer, AuthState } from './auth.reducer';
 
-export const appFeatureKey = 'appState';
+export const stateFeatureKey = 'appState';
 
 export interface AppState {
-  user: User
+  authState: AuthState
 }
 
-const initialState: AppState = {
-  user: undefined
-}
+export const reducers: ActionReducerMap<AppState> = {
+  authState: authReducer
+};
 
-export const appReducer = createReducer(
-  initialState,
-  on(AuthActions.signIn, (state, action) => ({...state, user: action.user })),
-  on(AuthActions.signUp, (state, action) => ({...state, user: action.user })),
-  on(AuthActions.signOut, (state, action) => ({...state, user: undefined })),
-);
 
 export const metaReducers: MetaReducer<AppState>[] = isDevMode() ? [] : [];

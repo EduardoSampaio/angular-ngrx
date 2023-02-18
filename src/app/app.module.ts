@@ -22,7 +22,6 @@ import { entityConfig } from './entity-metadata';
     BrowserModule,
     CoreModule,
     BrowserAnimationsModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictActionImmutability: true,
@@ -31,6 +30,7 @@ import { entityConfig } from './entity-metadata';
         strictStateSerializability: true
       }
     }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
     EntityDataModule.forRoot(entityConfig)

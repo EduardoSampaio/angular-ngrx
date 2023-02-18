@@ -1,4 +1,3 @@
-import { appFeatureKey, appReducer } from './states/reducers/index';
 import { LoggedinGuard } from './guards/loggein.guard';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -7,13 +6,14 @@ import { SharedModule } from '@shared/shared.module';
 import { HeaderComponent } from './components/header/header.component';
 import { PermissionGuard } from './guards/permission.guard';
 import { StoreModule } from '@ngrx/store';
+import * as fromState from './states/reducers';
 
 @NgModule({
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
-    StoreModule.forFeature(appFeatureKey, appReducer)
+    StoreModule.forFeature(fromState.stateFeatureKey, fromState.reducers, { metaReducers: fromState.metaReducers })
   ],
   exports: [HeaderComponent, StoreModule],
   declarations: [HeaderComponent],
