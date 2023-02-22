@@ -5,6 +5,6 @@ export const selectAuthState = createFeatureSelector<AppState>("appState");
 
 export const isLoggedIn = createSelector(
   selectAuthState,
-  (appState) => !!appState.authState.user
+  (appState) => !!appState.authState.user && localStorage.getItem("user") !== undefined
 );
 

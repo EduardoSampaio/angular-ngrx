@@ -5,7 +5,17 @@
       "id": "feab0893-6c5c-e7be-b5f0-bf803e2fe40a",
       "username": "Eduardo",
       "password": "1234"
+    },
+    {
+      "id": "a4ae3cec-433d-ea18-0da2-44898a3e1e3b",
+      "username": "Teste",
+      "password": "1234"
+    },
+    {
+      "id": "324a754b-4176-c763-b377-1076a642df95",
+      "username": "novo",
+      "password": "1234"
     }
   ],
-  "categories": []
+  "categories": [{"id": "dasdas1d6a4sd64asd", "name": "Eletrônico"}]
 }

@@ -1,3 +1,5 @@
+import { signUp } from './../../../../core/states/actions/auth.action';
+import { AppState } from '@core/states/reducers/index';
 import { LoginService } from './../../login.service';
 import { Component } from '@angular/core';
 import {
@@ -10,6 +12,7 @@ import { User } from '@shared/models/user.model';
 import { Guid } from 'guid-typescript';
 import { passwordMatchValidator } from '@shared/services/custom-validation.service';
 import { NotificationService } from '@shared/services/notification.service';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -23,7 +26,8 @@ export class SignupComponent {
   constructor(
     private loginService: LoginService,
     private fb: FormBuilder,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private store: Store<AppState>,
   ) {
     this.initform();
   }
@@ -51,6 +55,7 @@ export class SignupComponent {
       complete: () => {
         this.notificationService.showNotification("New user registred successful!","","success");
         this.resetForm(this.userRegisterform);
+        this.store.dispatch(signUp({user}));
       },
       error: (error) => console.error(error),
     });
