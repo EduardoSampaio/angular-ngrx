@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Category Edit</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Category" [(ngModel)]="data.name">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="data">Salvar</button>
+</mat-dialog-actions>

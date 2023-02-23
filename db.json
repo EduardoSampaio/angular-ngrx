@@ -17,5 +17,26 @@
       "password": "1234"
     }
   ],
-  "categories": [{"id": "dasdas1d6a4sd64asd", "name": "Eletrônico"}]
+  "categories": [
+    {
+      "id": "324a754b-4176-c763-b377-1076a642df95",
+      "name": "informática"
+    },
+    {
+      "name": "Eletrónico",
+      "id": "e61083f2-9f0e-1899-6966-62c2652a7335"
+    },
+    {
+      "name": "Bebidas",
+      "id": "2464feaf-3a43-f7e3-4645-1affaa064042"
+    },
+    {
+      "id": "7838f14a-427b-c33c-c792-4ae29f46bf4f",
+      "name": "Nova"
+    },
+    {
+      "name": "teste",
+      "id": "156b61eb-4268-8791-2862-e1d165ebc01c"
+    }
+  ]
 }

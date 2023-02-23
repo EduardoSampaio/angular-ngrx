@@ -53,6 +53,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { NotificationCustomComponent } from './components/notification-custom/notification-custom.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { ModalDialogComponent } from '../modules/category/components/modal-dialog/modal-dialog.component';
 
 const AllMaterialModules = [
   MatAutocompleteModule,
@@ -102,10 +104,12 @@ const AllMaterialModules = [
     RouterModule,
     AllMaterialModules
   ],
-  exports: [AllMaterialModules, FormsModule, ReactiveFormsModule, HttpClientModule, PageNotFoundComponent],
+  exports: [AllMaterialModules, FormsModule, ReactiveFormsModule, HttpClientModule, PageNotFoundComponent, ConfirmDialogComponent],
   declarations: [
     PageNotFoundComponent,
-    NotificationCustomComponent
+    NotificationCustomComponent,
+    ConfirmDialogComponent,
+    ModalDialogComponent
   ],
   providers: [],
 })

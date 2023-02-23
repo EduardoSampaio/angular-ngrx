@@ -7,12 +7,7 @@ export const loadCategories = createAction(
 
 export const loadCategoriessSuccess = createAction(
   '[Category] Load Categories Success',
-  props<{ data: Category }>()
-);
-
-export const loadCategoriesFailure = createAction(
-  '[Category] Load Categories Failure',
-  props<{ error: any }>()
+  props<{ categories: Category[] }>()
 );
 
 export const removeCategory = createAction(
@@ -22,6 +17,12 @@ export const removeCategory = createAction(
 
 export const updateCategory = createAction(
   '[Category] Update Category',
+  props<{ data: Category }>()
+);
+
+
+export const addNewCategory = createAction(
+  '[Category] Add New Category',
   props<{ data: Category }>()
 );
 

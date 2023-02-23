@@ -15,12 +15,11 @@ export class CategoryService {
   constructor(private httpClient: HttpClient) { }
 
   add(category: Category): Observable<Category> {
-    category.id =  Guid.create().toString();
     return this.httpClient.post<Category>(this.BASE_URL, category);
   }
 
   update(category: Category): Observable<Category> {
-    return this.httpClient.put<Category>(this.BASE_URL, category);
+    return this.httpClient.put<Category>(`${this.BASE_URL}/${category.id}`, category);
   }
 
   delete(category: Category): Observable<Category> {
