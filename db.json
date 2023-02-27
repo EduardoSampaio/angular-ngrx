@@ -1,5 +1,5 @@
 {
-  "products": [],
+  "products": [{"id": "2464feaf-3a43-f7e3-4645-1affaa064042" , "name": "mouse" , "price": 35.90, "category": "informática" }],
   "users": [
     {
       "id": "feab0893-6c5c-e7be-b5f0-bf803e2fe40a",
@@ -33,10 +33,6 @@
     {
       "id": "7838f14a-427b-c33c-c792-4ae29f46bf4f",
       "name": "Nova"
-    },
-    {
-      "name": "teste",
-      "id": "156b61eb-4268-8791-2862-e1d165ebc01c"
     }
   ]
 }
