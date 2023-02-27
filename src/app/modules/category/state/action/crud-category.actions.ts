@@ -1,5 +1,6 @@
 import { Category } from '@shared/models/category.model';
 import { createAction, props } from '@ngrx/store';
+import { Update } from '@ngrx/entity';
 
 export const loadCategories = createAction(
   '[Category] Load categories'

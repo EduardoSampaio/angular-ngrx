@@ -9,9 +9,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { EntityDataModule } from '@ngrx/data';
+import { DefaultDataServiceConfig, EntityDataModule, HttpUrlGenerator } from '@ngrx/data';
 import { entityConfig } from './entity-metadata';
+import { CategoryDataService } from '@modules/category/services/category-data.service';
 
+const defaultDataServiceConfig: DefaultDataServiceConfig = {
+  root: 'http://localhost:3000',
+};
 
 @NgModule({
   declarations: [
@@ -32,8 +36,8 @@ import { entityConfig } from './entity-metadata';
     }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot(),
-    EntityDataModule.forRoot(entityConfig)
+    EntityDataModule.forRoot(entityConfig),
+    StoreRouterConnectingModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

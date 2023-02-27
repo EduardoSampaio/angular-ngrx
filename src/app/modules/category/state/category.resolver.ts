@@ -1,28 +1,24 @@
-import { loadCategories } from './action/crud-category.actions';
-import { finalize, first, Observable, tap } from 'rxjs';
+import { CategoryDataService } from '@modules/category/services/category-data.service';
+import { CategoryService } from '@modules/category/services/category.service';
+import { Observable, map, tap, filter, first } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { Category } from '@shared/models/category.model';
-import { Store } from '@ngrx/store';
-import { CategoryState } from './reducers';
 
 @Injectable()
 export class CategoryResolver implements Resolve<any> {
 
-  loading = false;
-
-  constructor(private store: Store<CategoryState>) { }
+  constructor(private categoryEntityDataService: CategoryService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    return this.store.pipe(
-      tap(() => {
-        if(!this.loading) {
-          this.loading = true;
-          this.store.dispatch(loadCategories());
+    return this.categoryEntityDataService.loaded$
+    .pipe(
+      tap(loaded => {
+        if(!loaded) {
+          this.categoryEntityDataService.getAll();
         }
       }),
-      first(),
-      finalize(() => this.loading = false)
-    );
+      filter(loaded => !!loaded),
+      first()
+    )
   }
 }

@@ -10,24 +10,28 @@ import {
 } from '@ngrx/store';
 import { Category } from '@shared/models/category.model';
 import { CategoryActions } from '../action/category-action-type';
+import { createEntityAdapter, EntityState } from '@ngrx/entity';
 
 export const FeatureKey = 'categoryState';
 
-export interface CategoryState {
+export interface CategoryState extends EntityState<Category> {
   categories: Array<Category>,
   current: Category,
+  allCategoryLoaded: boolean
 }
 
-const initialState: CategoryState = {
-  categories: [],
-  current: undefined,
-}
+export const adapter = createEntityAdapter<Category>();
+
+export const initialstate =  adapter.getInitialState({
+  allCategoryLoaded: false
+});
 
 export const reducer = createReducer(
-  initialState,
+  initialstate,
   on(CategoryActions.addNewCategory, (state , action) => ({...state, current: action.data})),
   on(CategoryActions.removeCategory, (state , action) => ({...state, current: action.data})),
   on(CategoryActions.updateCategory, (state , action) => ({...state, current: action.data})),
   on(CategoryActions.loadCategories, (state) => ({...state})),
-  on(CategoryActions.loadCategoriessSuccess, (state, action) => ({...state, categories: action.categories})),
+  on(CategoryActions.loadCategoriessSuccess, (state, action) => adapter.addMany(action.categories, {...state, allCategoryLoaded: true})),
 )
+

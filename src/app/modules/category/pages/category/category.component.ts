@@ -1,47 +1,49 @@
+import { CategoryService } from '@modules/category/services/category.service';
 import { selectCategoriesList } from './../../state/selectors/category.selectors';
 import { addNewCategory, loadCategories, removeCategory, updateCategory } from './../../state/action/crud-category.actions';
 import { CategoryState } from './../../state/reducers/index';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@shared/components/confirm-dialog/confirm-dialog.component';
-import { CategoryService } from './../../services/category.service';
 import { Category } from '@shared/models/category.model';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { DataSource } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDialogComponent } from '@modules/category/components/modal-dialog/modal-dialog.component';
 import { Guid } from 'guid-typescript';
+import { CategoryDataService } from '@modules/category/services/category-data.service';
 
 
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss']
+  styleUrls: ['./category.component.scss'],
 })
 export class CategoryComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'name', 'manager'];
   dataSource = new MatTableDataSource<Category>;
-  loadCategories$: Observable<Category[]> = this.store.select(selectCategoriesList);
+  loadCategories$: Observable<Category[]>;
 
 
   constructor(
     private dialog: MatDialog,
-    private store: Store<CategoryState>) { }
+    private store: Store<CategoryState>,
+    private categoryEntityDataService: CategoryService) { }
 
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loadCategories$ = this.categoryEntityDataService.entities$;
 
-  ngAfterViewInit(): void {
     this.loadCategories$.subscribe((categories) => {
-      if (categories !== undefined) {
         this.dataSource.data = categories
-        console.log(categories);
-      }
     });
+
   }
+
+  ngAfterViewInit(): void {}
 
 
   confirmDialog(category: Category): void {

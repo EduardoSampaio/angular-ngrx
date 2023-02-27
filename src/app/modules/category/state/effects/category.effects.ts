@@ -1,4 +1,3 @@
-import { CategoryService } from './../../services/category.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CategoryActions } from '../action/category-action-type';
@@ -7,6 +6,8 @@ import { Store } from '@ngrx/store';
 import { NotificationService } from '@shared/services/notification.service';
 import { loadCategories } from '../action/crud-category.actions';
 import { CategoryState } from '../reducers';
+import { CategoryService } from '@modules/category/services/category.service';
+import { CategoryDataService } from '@modules/category/services/category-data.service';
 
 
 
@@ -15,13 +16,13 @@ export class CategoryEffects {
 
   constructor(
     private actions$: Actions,
-    private categoryService: CategoryService,
+    private categoryDataService: CategoryService,
     private notification: NotificationService,
     private store: Store<CategoryState>) { }
 
   loadCategories$ = createEffect(() => this.actions$.pipe(
     ofType(CategoryActions.loadCategories),
-    mergeMap(() => this.categoryService.listAll()
+    mergeMap(() => this.categoryDataService.getAll()
       .pipe(map(categories => CategoryActions.loadCategoriessSuccess({ categories })),
         catchError(() => EMPTY)
       ))
@@ -30,7 +31,7 @@ export class CategoryEffects {
   addNewCategory$ = createEffect(() => this.actions$.pipe(
     ofType(CategoryActions.addNewCategory),
     tap((action) => {
-      this.categoryService.add(action.data).subscribe({
+      this.categoryDataService.add(action.data).subscribe({
         next: () => {
           this.store.dispatch(loadCategories());
         },
@@ -47,9 +48,10 @@ export class CategoryEffects {
    updateCategory$ = createEffect(() => this.actions$.pipe(
     ofType(CategoryActions.updateCategory),
     tap((action) => {
-      this.categoryService.update(action.data).subscribe({
+      this.categoryDataService.update(action.data).subscribe({
         next: () => {
           this.store.dispatch(loadCategories());
+
         },
         error: () => {
           this.notification.showNotification("Category update Error", "", "error");
@@ -64,8 +66,8 @@ export class CategoryEffects {
   removeCategory$ = createEffect(() => this.actions$.pipe(
     ofType(CategoryActions.removeCategory),
     tap((action) => {
-      this.categoryService.delete(action.data).subscribe({
-        next: () => {
+      this.categoryDataService.delete(action.data.id).subscribe({
+        next: (value) => {
           this.store.dispatch(loadCategories());
         },
         error: () => {
